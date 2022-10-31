@@ -3,6 +3,7 @@ const chronometer = new Chronometer();
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
 
+
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
 let secDec = document.getElementById('secDec');
@@ -28,6 +29,12 @@ function printSeconds() {
 }
 
 function printCentiseconds() {
+  for (let i = 0; i < 10; i++) {
+    centisecUni.innerHTML = centisecUni.value + 1;
+    centisecUni.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getCentiseconds())[1];
+  }
+
+
   centisecUni.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getCentiseconds())[1];
   centisecDec.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getCentiseconds())[0];
 }
@@ -79,8 +86,8 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   if (btnRight.classList.contains('reset')) {
     chronometer.reset();
-    clearSplits();
     printTime();
+    clearSplits();
   } else {
     printSplit();
   }
